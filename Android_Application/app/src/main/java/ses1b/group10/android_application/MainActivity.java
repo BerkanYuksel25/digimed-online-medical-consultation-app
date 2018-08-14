@@ -1,4 +1,4 @@
-//Main Activity Java File
+//Main Activity
 
 package ses1b.group10.android_application;
 
