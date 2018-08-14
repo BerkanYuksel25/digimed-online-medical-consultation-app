@@ -1,3 +1,5 @@
+//Main Activity
+
 package ses1b.group10.android_application;
 
 import android.support.v7.app.AppCompatActivity;
