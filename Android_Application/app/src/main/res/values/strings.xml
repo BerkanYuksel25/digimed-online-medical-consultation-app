@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Android_Application</string>
-    <string name="it_begins">It Begins.</string>
+    <string name="app_name">DigiMED</string>
+    <string name="login_page">Login Page</string>
+    <string name="logo_content_description">The main launch screen logo</string>
 </resources>
