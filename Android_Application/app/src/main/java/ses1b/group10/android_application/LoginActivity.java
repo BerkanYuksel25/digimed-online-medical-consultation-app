@@ -1,3 +1,5 @@
+//Login Activity File
+
 package ses1b.group10.android_application;
 
 import android.support.v7.app.AppCompatActivity;
