@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
 
     <RelativeLayout
@@ -13,8 +13,8 @@
         android:layout_weight="1"
         android:background="@color/white">
 
-    <include android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        <include android:id="@+id/toolbar"
+            layout="@layout/toolbar"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,21 +25,20 @@
             android:paddingRight="15dp">
 
             <ImageView
-                android:id="@+id/imageViewplaces"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/digimed_logo"
+            android:id="@+id/imageViewplaces"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/digimed_logo"
                 android:layout_gravity="center"
                 />
-
 
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:hint="@string/Email"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:paddingBottom="15dp"
                 android:textColorHint="@color/colorPrimaryDark" />
@@ -49,28 +48,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:hint="@string/hint_password"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingBottom="15dp"
+                android:textColorHint="@color/colorPrimaryDark" />
+            <EditText
+                android:id="@+id/editConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:paddingBottom="15dp"
                 android:textColorHint="@color/colorPrimaryDark" />
 
             <Button
-                android:id="@+id/buttonLogin"
+                android:id="@+id/buttonSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="7dp"
                 android:background="@color/colorPrimaryDark"
-                android:text="Login"
+                android:text="Sign Up"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textViewSignup"
+                android:id="@+id/textViewLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="Don't have account? Sign Up"
+                android:text="Already have an account? Login"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorPrimaryDark" />
@@ -85,6 +93,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:visibility="gone" />
+
+
     </RelativeLayout>
 
 

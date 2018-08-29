@@ -1,0 +1,186 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white">
+
+
+                <EditText
+                    android:id="@+id/editTextFName"
+                    android:layout_width="159dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:hint="First Name"
+                    android:inputType="textPersonName"
+                    android:paddingBottom="15dp"
+                    android:textColorHint="@color/colorPrimaryDark" />
+
+                <EditText
+                    android:id="@+id/editFamilyName"
+                    android:layout_width="158dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="sans-serif"
+                    android:hint="Family Name"
+                    android:inputType="textPersonName"
+                    android:paddingBottom="15dp"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDate"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="15dp"
+                android:hint="Date of Birth"
+                android:inputType="date"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="15dp"
+                android:textColorHint="@color/colorPrimaryDark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white">
+
+                <EditText
+                    android:id="@+id/editTextWeight"
+                    android:layout_width="155dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:hint="Weight Kg"
+                    android:inputType="numberDecimal"
+                    android:paddingBottom="15dp"
+                    android:textColorHint="@color/colorPrimaryDark" />
+
+                <EditText
+                    android:id="@+id/editTextHeight"
+                    android:layout_width="173dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:hint="Height Cm"
+                    android:inputType="numberDecimal"
+                    android:paddingBottom="15dp"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white">
+
+                <RadioGroup
+                    android:id="@+id/radioGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:paddingBottom="15dp"
+                        android:text="Male"
+                        android:textColorHint="@color/colorPrimaryDark"
+
+
+                        />/>
+
+                    <RadioButton
+                        android:id="@+id/radioFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:paddingBottom="15dp"
+                        android:text="Female"
+                        android:textColorHint="@color/colorPrimaryDark"
+
+                        />
+
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+
+
+            <EditText
+                android:id="@+id/editMedCon"
+                android:layout_width="312dp"
+                android:layout_height="122dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textLongMessage"
+                android:text="Medical Condition"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="15dp"
+                android:textColorHint="@color/colorPrimaryDark"/>/>
+
+            <Button
+                android:id="@+id/buttonSaveDet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
