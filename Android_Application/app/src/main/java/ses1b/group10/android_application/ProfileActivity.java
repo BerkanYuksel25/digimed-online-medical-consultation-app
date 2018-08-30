@@ -25,21 +25,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.Objects;
+
+import static java.util.Objects.*;
 
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+
     private EditText editTextFirstName, editTextFamilyName, editTextDOB, editTextWeight, editTextHeight, editTextMedCon;
-    RadioGroup radioGroup;
-    RadioButton radioButton;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     private static final String TAG = "ProfileActivity";
-    //private Button save;
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private PatientProfile patientProfile;
     String FirstName, FamilyName, Weight, Height, MedCon, DOB, Gender;
-    private FirebaseUser firebaseUser;
     FirebaseFirestore db;
 
     @Override
@@ -47,14 +49,26 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        initViews();
+        initListeners();
+
+
+    }
+    private void initViews() {
+
         editTextFirstName = findViewById(R.id.editTextFName);
         editTextFamilyName = findViewById(R.id.editFamilyName);
-       // editTextDOB = findViewById(R.id.editTextDOB);
         editTextWeight = findViewById(R.id.editTextWeight);
         editTextHeight = findViewById(R.id.editTextHeight);
         editTextMedCon = findViewById(R.id.editMedCon);
         radioGroup = findViewById(R.id.radioGender);
-        mDisplayDate = (TextView) findViewById(R.id.tvDate);
+        mDisplayDate = findViewById(R.id.tvDate);
+
+    }
+
+
+    private void initListeners() {
+
         findViewById(R.id.buttonSaveDet).setOnClickListener(this);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -73,7 +87,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
                         year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
         });
@@ -89,7 +103,50 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         };
 
+    }
 
+
+
+    private void saveUserData() {
+
+        initObject();
+
+
+
+        final String user = requireNonNull(firebaseAuth.getCurrentUser()).getUid();
+        final DatabaseReference databaseReference = firebaseDatabase.getReference().child("Patients").child(user);
+
+         patientProfile = new PatientProfile(FirstName, FamilyName, Weight, Height, MedCon, DOB, Gender);
+
+        databaseReference.setValue(patientProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(ProfileActivity.this, "Profile has been created", Toast.LENGTH_LONG).show();
+                    finish();
+                    Intent intent = new Intent(ProfileActivity.this, DataPacket.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    Toast.makeText(ProfileActivity.this, "Profile has been created", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
+    private void initObject() {
+        FirstName = editTextFirstName.getText().toString();
+        FamilyName = editTextFamilyName.getText().toString();
+        Weight = editTextWeight.getText().toString();
+        Height = editTextHeight.getText().toString();
+        MedCon = editTextMedCon.getText().toString();
+        DOB = mDisplayDate.getText().toString();
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        Gender = radioButton.getText().toString();
     }
 
 
@@ -103,46 +160,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
         }
-
-    }
-
-
-    private void saveUserData() {
-
-        FirstName = editTextFirstName.getText().toString();
-        FamilyName = editTextFamilyName.getText().toString();
-        Weight = editTextWeight.getText().toString();
-        Height = editTextHeight.getText().toString();
-        MedCon = editTextMedCon.getText().toString();
-        DOB = mDisplayDate.getText().toString();
-
-        int radioId = radioGroup.getCheckedRadioButtonId();
-
-        radioButton = findViewById(radioId);
-
-        Gender = radioButton.getText().toString();
-
-        final String user = firebaseAuth.getCurrentUser().getUid();
-        final DatabaseReference databaseReference = firebaseDatabase.getReference().child("Patients").child(user);
-
-        PatientProfile patientProfile = new PatientProfile(FirstName, FamilyName, Weight, Height, MedCon, DOB, Gender);
-
-        databaseReference.setValue(patientProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(ProfileActivity.this, "Profile has been created", Toast.LENGTH_LONG).show();
-                    finish();
-                    Intent intent = new Intent(ProfileActivity.this, DataPacket.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    Toast.makeText(ProfileActivity.this, "Profile has been created", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
 
     }
 }

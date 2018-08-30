@@ -17,6 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
+import java.util.Objects;
+
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
     ProgressBar progressBar;
@@ -35,10 +37,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
-        editConfirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
+        editTextEmail =  findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        progressBar =  findViewById(R.id.progressbar);
+        editConfirmPassword =  findViewById(R.id.editConfirmPassword);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -95,7 +97,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 }

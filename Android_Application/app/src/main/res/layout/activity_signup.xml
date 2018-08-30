@@ -1,17 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".SignupActivity">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/white">
+
 
         <include android:id="@+id/toolbar"
             layout="@layout/toolbar"/>
@@ -19,26 +15,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:orientation="vertical"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
 
             <ImageView
-            android:id="@+id/imageViewplaces"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/digimed_logo"
+                android:id="@+id/imageViewplaces"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
                 android:layout_gravity="center"
-                />
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/logo_content_description"
+                android:src="@drawable/digimed_logo" />
 
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:hint="Email"
+                android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
                 android:paddingBottom="15dp"
                 android:textColorHint="@color/colorPrimaryDark" />
@@ -48,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:hint="Password"
+                android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:paddingBottom="15dp"
                 android:textColorHint="@color/colorPrimaryDark" />
@@ -57,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:hint="Confirm Password"
+                android:hint="@string/hint_c_password"
                 android:inputType="textPassword"
                 android:paddingBottom="15dp"
                 android:textColorHint="@color/colorPrimaryDark" />
@@ -69,7 +64,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="7dp"
                 android:background="@color/colorPrimaryDark"
-                android:text="Sign Up"
+                android:text="@string/common_signin_button_text"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 
@@ -78,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="Already have an account? Login"
+                android:text="@string/btn_link_to_login"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorPrimaryDark" />
@@ -90,12 +85,11 @@
             android:id="@+id/progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_gravity="center"
             android:visibility="gone" />
 
 
-    </RelativeLayout>
+
 
 
 </LinearLayout>
