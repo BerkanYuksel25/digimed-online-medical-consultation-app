@@ -67,7 +67,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@color/colorPrimaryDark" />
-        
+
 
         <RelativeLayout
             android:layout_width="match_parent"
