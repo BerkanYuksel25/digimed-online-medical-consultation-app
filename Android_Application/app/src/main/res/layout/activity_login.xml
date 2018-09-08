@@ -1,25 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    android:background="@color/white">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="210dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/login_page"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:id="@+id/imageViewplaces"
+            android:layout_width="286dp"
+            android:layout_height="191dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/logo_content_description"
+            android:src="@drawable/digimed_logo" />
+
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="@string/Email"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="15dp"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:paddingBottom="15dp"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/btn_login"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textViewSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/btn_link_to_register"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimaryDark" />
+
+
+    </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_gravity="center"
+            android:visibility="gone" />
+
+
+
+</LinearLayout>
