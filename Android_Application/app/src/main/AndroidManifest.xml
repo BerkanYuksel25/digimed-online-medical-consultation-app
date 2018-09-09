@@ -21,6 +21,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".VideoMenuActivity" />
+        <activity android:name=".RecordActivity" />
         <activity android:name=".DataPacket"></activity>
     </application>
 

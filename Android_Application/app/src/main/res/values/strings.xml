@@ -40,8 +40,11 @@
     <string name="gender_female">Female</string>
     <string name="hint_med_con">Medical Condition</string>
     <string name="btn_save_profile">Save</string>
+    <string name="record">record</string>
+    <string name="play">play</string>
+    <string name="action_settings">Settings</string>
 
 
-
+    <item name="action_settings" type="id">Settings</item>
 </resources>
 
