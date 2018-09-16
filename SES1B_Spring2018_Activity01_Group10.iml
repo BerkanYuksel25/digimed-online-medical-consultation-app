@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="SES1B_Spring2018_Activity01_Group10" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/Android_Application">
+      <sourceFolder url="file://$MODULE_DIR$/Android_Application/app/build/generated/source/buildConfig/debug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Android_Application/app/src/test/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Android_Application/app/src/androidTest/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Android_Application/app/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Android_Application/app/build/generated/source/r/debug" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
