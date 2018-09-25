@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProfileActivity"
+    tools:context=".Doctor_End.DoctorProfileActivity"
     android:background="@color/white"
     >
 
@@ -159,7 +159,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:fontFamily="sans-serif"
-            android:hint="@string/hint_med_con"
+            android:hint="Current occupation"
             android:inputType="textLongMessage"
             android:labelFor="@id/tvDate"
             android:paddingBottom="15dp"

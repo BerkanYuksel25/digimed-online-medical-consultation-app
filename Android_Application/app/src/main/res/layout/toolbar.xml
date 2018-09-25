@@ -6,24 +6,24 @@
 
 
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:elevation="40dp"
-        app:titleTextColor="@android:color/white"
-        android:background="@color/colorPrimaryDark"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="40dp"
+    app:titleTextColor="@android:color/white"
+    android:background="@color/colorPrimaryDark"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
 
-        >
+    >
 
     <!--<ImageView-->
-        <!--android:id="@+id/imageViewplaces"-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:adjustViewBounds="true"-->
-        <!--android:src="@drawable/digimed_logo" />-->
+    <!--android:id="@+id/imageViewplaces"-->
+    <!--android:layout_width="40dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:adjustViewBounds="true"-->
+    <!--android:src="@drawable/digimed_logo" />-->
 
-    </android.support.v7.widget.Toolbar>
+</android.support.v7.widget.Toolbar>
 
 

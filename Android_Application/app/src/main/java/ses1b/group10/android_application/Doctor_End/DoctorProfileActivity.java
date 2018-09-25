@@ -1,4 +1,4 @@
-package ses1b.group10.android_application;
+package ses1b.group10.android_application.Doctor_End;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -8,10 +8,10 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -25,12 +25,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -40,11 +38,16 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import ses1b.group10.android_application.DoctorProfile;
+import ses1b.group10.android_application.HomeActivity;
+import ses1b.group10.android_application.PatientProfile;
+import ses1b.group10.android_application.ProfileActivity;
+import ses1b.group10.android_application.R;
+import ses1b.group10.android_application.heart_rate_monitor.HeartRateMonitor;
 
 import static java.util.Objects.requireNonNull;
 
-
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class DoctorProfileActivity extends AppCompatActivity  implements View.OnClickListener {
 
     private EditText editTextFirstName, editTextFamilyName, editTextDOB, editTextWeight, editTextHeight, editTextMedCon;
     private RadioGroup radioGroup;
@@ -65,8 +68,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
-    private PatientProfile patientProfile;
-    private StorageReference patientProfileImage;
+    private DoctorProfile doctorProfile;
+    private StorageReference docProfileImage;
 
     ProgressBar progressBar;
 
@@ -78,10 +81,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     String currentUserId;
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
+        setContentView(R.layout.activity_doctor_profile);
 
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
@@ -92,9 +94,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("Patients").child(currentUserId);
+        databaseReference = firebaseDatabase.getReference().child("Doctors").child(currentUserId);
 
-        patientProfileImage =FirebaseStorage.getInstance().getReference().child("PatientImage");
+        docProfileImage = FirebaseStorage.getInstance().getReference().child("DoctorsImage");
 
 
 
@@ -131,7 +133,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        ProfileActivity.this,
+                        DoctorProfileActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
                         year,month,day);
@@ -172,7 +174,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(DoctorProfileActivity.this);
 
         builder.setTitle("Add Photo!");
 
@@ -289,7 +291,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         if (selectedImageUri != null) {
             progressBar.setVisibility(View.VISIBLE);
-            final StorageReference filePath = patientProfileImage.child(currentUserId + ".jpg");
+            final StorageReference filePath = docProfileImage.child(currentUserId + ".jpg");
 
             filePath.putFile(selectedImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
@@ -315,22 +317,24 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             saveUserData();
         }
 
-}
+    }
 
 
 
     private void saveUserData () {
 
-        patientProfile = new PatientProfile(FirstName, FamilyName, Weight, Height, MedCon, DOB, Gender, uriImage);
+        doctorProfile = new DoctorProfile(FirstName, FamilyName,uriImage,DOB,MedCon,Gender, Height,Weight);
+
+
 
         progressBar.setVisibility(View.GONE);
-        databaseReference.setValue(patientProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.setValue(doctorProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(ProfileActivity.this, "Profile has been created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DoctorProfileActivity.this, "Profile has been created", Toast.LENGTH_SHORT).show();
                     finish();
-                    Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(DoctorProfileActivity.this, DocHome.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
@@ -356,6 +360,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 }
+
+
 
 
 

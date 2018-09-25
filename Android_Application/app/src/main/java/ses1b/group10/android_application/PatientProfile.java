@@ -8,9 +8,10 @@ public class PatientProfile {
     private String patientHeight;
     private String patientMedCon;
     private String patientGender;
+    private String patientImage;
 
 
-    public PatientProfile(String patientFirstName, String patientFamilyName, String patientWeight, String patientHeight, String patientMedCon, String patientDOB,String patientGender) {
+    PatientProfile(String patientFirstName, String patientFamilyName, String patientWeight, String patientHeight, String patientMedCon, String patientDOB, String patientGender, String patientImage) {
         this.patientFirstName = patientFirstName;
         this.patientFamilyName = patientFamilyName;
         this.patientDOB = patientDOB;
@@ -18,6 +19,7 @@ public class PatientProfile {
         this.patientHeight = patientHeight;
         this.patientMedCon = patientMedCon;
         this.patientGender = patientGender;
+        this.patientImage =patientImage;
 
     }
 
@@ -86,5 +88,13 @@ public class PatientProfile {
 
     public void setPatientDOB(String patientDOB) {
         this.patientDOB = patientDOB;
+    }
+
+    public String getPatientImage() {
+        return patientImage;
+    }
+
+    public void setPatientImage(String patientImage) {
+        this.patientImage = patientImage;
     }
 }
