@@ -58,6 +58,8 @@
     <string name="DoctorName">Doctor Name</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
+    <string name="title_activity_maps">Map</string>
+
 
     <item name="action_settings" type="id">Settings</item>
 </resources>
