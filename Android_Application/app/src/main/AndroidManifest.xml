@@ -2,7 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ses1b.group10.android_application">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.flash" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -11,24 +27,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".SignupActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".DisplayDoctors" />
+        <!-- <activity android:name=".SendDataPacket" /> -->
+        <activity android:name=".heart_rate_monitor.HeartRateMonitor" />
+        <activity android:name=".dataPacket.Title" />
+        <activity android:name=".dataPacket.MedCon" />
+        <activity android:name=".dataPacket.RecordActivity" />
+        <activity android:name=".dataPacket.SendPacket" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".Doctor_End.DoctorProfileActivity" />
+        <activity android:name=".Doctor_End.DocHome" />
+        <activity android:name=".ViewDoctorDetails"></activity>
         <activity android:name=".VideoMenuActivity" />
         <activity android:name=".RecordActivity" />
         <activity android:name=".DataPacket"></activity>
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
 
 </manifest>

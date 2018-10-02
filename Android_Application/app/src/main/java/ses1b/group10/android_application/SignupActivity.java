@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -19,10 +20,14 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import java.util.Objects;
 
+import ses1b.group10.android_application.Doctor_End.DoctorProfileActivity;
+
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
     ProgressBar progressBar;
+    private CheckBox imDoc;
     EditText editTextEmail, editTextPassword, editConfirmPassword;
+
 
     private FirebaseAuth mAuth;
 
@@ -33,7 +38,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       // toolbar.setLogo(R.drawable.digimed_logo);
+        // toolbar.setLogo(R.drawable.digimed_logo);
 
 
 
@@ -41,6 +46,19 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         editTextPassword = findViewById(R.id.editTextPassword);
         progressBar =  findViewById(R.id.progressbar);
         editConfirmPassword =  findViewById(R.id.editConfirmPassword);
+        imDoc= findViewById(R.id.imDocBox);
+
+        imDoc.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(((CheckBox)v).isChecked()) {
+                            Toast.makeText(SignupActivity.this,
+                                    "Doctor is selected",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -77,13 +95,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        /*
-        if(password!=cpassword){
-            editTextPassword.setError("Password does not match ");
+        if(!password.equals(cpassword)){
+            editTextPassword.setError("Passwords doesn't match.");
             editTextPassword.requestFocus();
             return;
         }
-        */
+
+
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -93,7 +111,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     finish();
-                    startActivity(new Intent(SignupActivity.this, ProfileActivity.class));
+                    if(imDoc.isChecked()){
+                        startActivity(new Intent(SignupActivity.this, DoctorProfileActivity.class));
+                    }
+                    else if(!imDoc.isChecked()){
+                        startActivity(new Intent(SignupActivity.this, ProfileActivity.class));
+                    }
+                  //  startActivity(new Intent(SignupActivity.this, ProfileActivity.class));
                 } else {
 
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
@@ -118,7 +142,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.textViewLogin:
                 finish();
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
     }

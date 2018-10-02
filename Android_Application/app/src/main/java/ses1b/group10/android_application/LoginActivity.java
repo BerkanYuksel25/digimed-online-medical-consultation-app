@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -21,13 +22,17 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-import static android.widget.Toast.*;
+import ses1b.group10.android_application.Doctor_End.DocHome;
+
+import static android.widget.Toast.LENGTH_SHORT;
+import static android.widget.Toast.makeText;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseAuth mAuth;
     EditText editTextEmail, editTextPassword;
     ProgressBar progressBar;
+    private CheckBox imDoc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       // toolbar.setLogo(R.drawable.digimed_logo);
+
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -43,6 +48,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextEmail =  findViewById(R.id.editTextEmail);
         editTextPassword =  findViewById(R.id.editTextPassword);
         progressBar =  findViewById(R.id.progressbar);
+        imDoc=findViewById(R.id.imDocBox);
+
+        imDoc.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(((CheckBox)v).isChecked()) {
+                            Toast.makeText(LoginActivity.this,
+                                    "Doctor is selected",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
 
         findViewById(R.id.textViewSignup).setOnClickListener(this);
         findViewById(R.id.buttonLogin).setOnClickListener(this);
@@ -85,9 +103,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     finish();
-                    Intent intent = new Intent(LoginActivity.this, DataPacket.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+
+                    if(!imDoc.isChecked()){
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                    else if (imDoc.isChecked()){
+                        Intent intent = new Intent(LoginActivity.this, DocHome.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+
                 } else {
                     makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), LENGTH_SHORT).show();
                 }
@@ -99,10 +126,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onStart() {
         super.onStart();
 
-        if (mAuth.getCurrentUser() != null) {
-            finish();
-            startActivity(new Intent(this, ProfileActivity.class));
-        }
+
     }
 
     @Override
