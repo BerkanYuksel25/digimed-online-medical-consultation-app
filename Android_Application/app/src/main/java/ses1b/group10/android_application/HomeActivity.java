@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseReference patientProfile;
     private FirebaseAuth mAuth;
 
-    private  String currentPatientId;
+    private String currentPatientId;
 
     PatientProfile patient;
 
@@ -56,8 +56,8 @@ public class HomeActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home")
-        ;
+        getSupportActionBar().setTitle("Home");
+
         patientProfile =FirebaseDatabase.getInstance().getReference().child("Patients");
 
 
@@ -135,10 +135,10 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(this,"Home Activity",Toast.LENGTH_SHORT).show();
                 break;
 
+
             case R.id.profile:
                sendUserToprofileActivity();
                break;
-
 
         }
 

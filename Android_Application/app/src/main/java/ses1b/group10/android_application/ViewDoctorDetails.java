@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,14 +25,17 @@ import ses1b.group10.android_application.dataPacket.Title;
 public class ViewDoctorDetails extends AppCompatActivity {
 
     private TextView textFirstName,textFamilyName,textOccupation;
-    private Button createDataPacket;
+    private Button createDataPacket, pairRequest;
     private CircleImageView profileImage;
 
 
-    private DatabaseReference profileRef;
+    private DatabaseReference profileRef, pairRequestRef;
     private FirebaseAuth mAuth;
 
     private String currentDoctorId;
+    private String currentPatientId;
+
+    private String pairStatus;
 
 
     @Override
@@ -41,8 +47,12 @@ public class ViewDoctorDetails extends AppCompatActivity {
 
         mAuth= FirebaseAuth.getInstance();
 
+        currentPatientId =mAuth.getCurrentUser().getUid();
+
+
         currentDoctorId =getIntent().getStringExtra("doc_id");
         profileRef = FirebaseDatabase.getInstance().getReference().child("Doctors").child(currentDoctorId);
+        pairRequestRef = FirebaseDatabase.getInstance().getReference().child("PairRequests");
 
         textFirstName =findViewById(R.id.docfirstName);
         textFamilyName=findViewById(R.id.doclastName);
@@ -50,6 +60,9 @@ public class ViewDoctorDetails extends AppCompatActivity {
 
         profileImage =findViewById(R.id.docProfileImage);
         createDataPacket=findViewById(R.id.createpacket);
+        pairRequest=findViewById(R.id.pairrequest);
+
+        pairStatus = "not_friends";
 
 
         showDocInfo();
@@ -64,6 +77,39 @@ public class ViewDoctorDetails extends AppCompatActivity {
             }
         });
 
+        pairRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    if(pairStatus.equals("not_friends")){
+                        SendPairRequest();
+                    }
+                    else if(pairStatus.equals("request_sent")){
+                        Toast.makeText(ViewDoctorDetails.this, "Awaiting Doctor Response...", Toast.LENGTH_LONG).show();
+                    }
+            }
+        });
+
+    }
+
+    private void SendPairRequest() {
+        pairRequestRef.child(currentPatientId).child(currentDoctorId).child("request_type").setValue("sent").addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    pairRequestRef.child(currentDoctorId).child(currentPatientId).child("request_type").setValue("received").addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                pairStatus = "request_sent";
+                                pairRequest.setText("Pair Request Sent");
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 
     private void showDocInfo() {
