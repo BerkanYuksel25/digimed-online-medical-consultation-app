@@ -59,7 +59,9 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
     <string name="title_activity_maps">Map</string>
-
+    <string name="btn_Cloud">Upload from Cloud Storage</string>
+    <string name="btn_Storage">Upload from Phone Storage</string>
+    <string name="btn_upload">Upload a File</string>
 
     <item name="action_settings" type="id">Settings</item>
 </resources>
