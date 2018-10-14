@@ -6,20 +6,18 @@
         android:title="Home"
         android:icon="@drawable/home"/>
 
-    <item android:id="@+id/createDataPacket"
-        android:title="Create data Packet"
-        android:icon="@drawable/messages"/>
+
 
     <item android:id="@+id/profile"
         android:title="Profile"
         android:icon="@drawable/profile_icon"/>
 
     <item android:id="@+id/findDoctors"
-        android:title="Find Doctors"
+        android:title="Patients Requests"
         android:icon="@drawable/find_people"/>
 
     <item android:id="@+id/MyDoctors"
-        android:title="My Doctors"
+        android:title="My Patient"
         android:icon="@drawable/friends"/>
 
 
@@ -28,9 +26,6 @@
         android:title="Sign Out"
         android:icon="@drawable/logout"/>
 
-    <item android:id="@+id/medicalcen"
-        android:title="Medical Facilities"
-        android:icon="@drawable/profile_icon"/>
 
 
 </menu>

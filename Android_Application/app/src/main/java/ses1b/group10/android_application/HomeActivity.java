@@ -139,6 +139,10 @@ public class HomeActivity extends AppCompatActivity {
                sendUserToprofileActivity();
                break;
 
+            case R.id.medicalcen:
+                Intent homeIntent= new Intent(this,MapsActivity.class);
+                startActivity(homeIntent);
+                break;
 
         }
 
