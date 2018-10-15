@@ -51,6 +51,7 @@
         <activity android:name=".ViewDoctorDetails" />
         <activity android:name=".VideoMenuActivity" />
         <activity android:name=".RecordActivity" />
+        <activity android:name=".DataPacket" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -59,7 +60,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".Doctor_End.EditDocProfileActivity"></activity>
+        <activity android:name=".UploadActivity"></activity>
     </application>
 
 </manifest>
