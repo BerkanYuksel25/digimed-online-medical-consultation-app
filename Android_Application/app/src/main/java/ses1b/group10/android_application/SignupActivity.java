@@ -54,7 +54,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     public void onClick(View v) {
                         if(((CheckBox)v).isChecked()) {
                             Toast.makeText(SignupActivity.this,
-                                    "Doctor is selected",Toast.LENGTH_LONG).show();
+                                    "Doctor is selected.",Toast.LENGTH_LONG).show();
                         }
                     }
                 }
