@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/doctorsHome"
+        android:title="Home"
+        android:icon="@drawable/home"/>
+
+    <item android:id="@+id/doctorsProfile"
+        android:title="Profile"
+        android:icon="@drawable/profile_icon"/>
+
+    <item android:id="@+id/viewYourPatients"
+        android:title="Find Doctors"
+        android:icon="@drawable/find_people"/>
+
+    <item android:id="@+id/acceptPairRequests"
+        android:title="My Doctors"
+        android:icon="@drawable/friends"/>
+
+    <item android:id="@+id/viewDataPackets"
+        android:title="Create data Packet"
+        android:icon="@drawable/messages"/>
+
+    <item android:id="@+id/signOut"
+        android:title="Sign Out"
+        android:icon="@drawable/logout"/>
+
+
+</menu>

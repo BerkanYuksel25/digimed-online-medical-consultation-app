@@ -71,7 +71,7 @@ public class VideoMenuActivity extends AppCompatActivity {
             System.out.println("Video title: " + title);
         }
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayList);
-        listView = findViewById(R.id.videoList);
+        //listView = findViewById(R.id.videoList);
         //listView.setAdapter(adapter);
     }
 
