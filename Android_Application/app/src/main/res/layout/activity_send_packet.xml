@@ -20,7 +20,7 @@
             android:padding="25sp"
             android:text="@string/data_packet"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <Space
