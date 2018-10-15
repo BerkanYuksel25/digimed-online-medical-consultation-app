@@ -53,6 +53,7 @@
         <activity android:name=".RecordActivity" />
         <activity android:name=".DataPacket" />
         <activity
+            android:exported="true"
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
 
@@ -61,6 +62,11 @@
             android:required="false" />
 
         <activity android:name=".UploadActivity"></activity>
+            android:label="@string/title_activity_maps"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>
