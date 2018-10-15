@@ -17,8 +17,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -102,17 +108,66 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    finish();
 
-                    if(!imDoc.isChecked()){
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                    if(imDoc.isChecked()){
+                        final String currentDocID;
+                        currentDocID = mAuth.getCurrentUser().getUid();
+
+                        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                        DatabaseReference userNameRef = rootRef.child("Doctors").child(currentDocID);
+                        ValueEventListener eventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.exists()) {
+                                    Intent intent = new Intent(LoginActivity.this, DocHome.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(LoginActivity.this,"No doctor with this information",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        };
+                        userNameRef.addListenerForSingleValueEvent(eventListener);
+
+
+
                     }
-                    else if (imDoc.isChecked()){
-                        Intent intent = new Intent(LoginActivity.this, DocHome.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                    else if (!imDoc.isChecked()){
+
+
+                        final String currentPatientID;
+                        currentPatientID = mAuth.getCurrentUser().getUid();
+
+                        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                        DatabaseReference userNameRef = rootRef.child("Patients").child(currentPatientID);
+                        ValueEventListener eventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.exists()) {
+                                    Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(LoginActivity.this,"No patient with this information",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        };
+                        userNameRef.addListenerForSingleValueEvent(eventListener);
+
                     }
 
                 } else {

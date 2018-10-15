@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewDoctorDetails">
+    tools:context=".Doctor_End.EditDocProfileActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -26,10 +26,11 @@
             >
 
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/docProfileImage"
-                android:layout_width="150sp"
-                android:layout_height="150sp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/docprofileimage"
+                android:layout_width="161dp"
+                android:layout_height="165dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="56dp"
@@ -45,7 +46,7 @@
                 android:gravity="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="15sp"
-                android:layout_below="@id/docProfileImage"
+                android:layout_below="@id/docprofileimage"
                 android:text="@string/hint_first_name"
                 android:layout_margin="15sp"/>
 
@@ -60,47 +61,47 @@
                 android:text="@string/hint_family_name"
                 android:layout_margin="15sp"/>
 
-
             <TextView
-                android:id="@+id/occupation"
+                android:id="@+id/docweight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="15sp"
                 android:layout_below="@id/doclastName"
+                android:text="@string/weight_kg"
+                android:layout_margin="15sp"/>
+            <TextView
+                android:id="@+id/docheight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:layout_below="@id/docweight"
+                android:text="@string/height_cm"
+                android:layout_margin="15sp"/>
+            <TextView
+                android:id="@+id/dococcupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:layout_below="@id/docheight"
                 android:text="Occupation"
                 android:layout_margin="15sp"/>
 
             <Button
-                android:id="@+id/pairrequest"
+                android:id="@+id/doceditProfile"
                 android:layout_width="200sp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/occupation"
-                android:layout_centerHorizontal="true"
-                android:background="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:text="Send Pair Request"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:layout_margin="15sp"
-                />
-
-            <Button
-                android:id="@+id/createpacket"
-                android:layout_width="200sp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/pairrequest"
                 android:layout_alignParentBottom="true"
+                android:layout_below="@id/dococcupation"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="0dp"
-                android:layout_marginStart="15sp"
-                android:layout_marginTop="15sp"
-                android:layout_marginEnd="15sp"
-                android:layout_marginBottom="15sp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="Send data packet"
+                android:text="Edit"
                 android:textAllCaps="true"
                 android:textColor="@color/white" />
 
@@ -108,6 +109,13 @@
         </RelativeLayout>
 
     </ScrollView>
+
+
+
+
+
+
+
 
 
 </RelativeLayout>

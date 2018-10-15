@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -48,15 +48,25 @@
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".Doctor_End.DoctorProfileActivity" />
         <activity android:name=".Doctor_End.DocHome" />
-        <activity android:name=".ViewDoctorDetails"></activity>
+        <activity android:name=".ViewDoctorDetails" />
         <activity android:name=".VideoMenuActivity" />
         <activity android:name=".RecordActivity" />
-        <activity android:name=".DataPacket"></activity>
-
+        <activity android:name=".DataPacket" />
         <activity
+            android:exported="true"
             android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".UploadActivity"></activity>
             android:label="@string/title_activity_maps"/>
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>
