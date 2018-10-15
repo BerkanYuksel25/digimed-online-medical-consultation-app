@@ -142,6 +142,11 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(homeIntent);
                 break;
 
+            case R.id.findDoctors:
+                Intent doctorIntent = new Intent(this,FindDoctorActivity.class);
+                startActivity(doctorIntent);
+                break;
+
         }
 
 
