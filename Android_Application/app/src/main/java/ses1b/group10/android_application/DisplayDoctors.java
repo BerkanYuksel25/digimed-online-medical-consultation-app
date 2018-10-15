@@ -25,9 +25,10 @@ public class DisplayDoctors extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String doc_id;
     DatabaseReference databaseReference;
+    RecyclerView displayDoctors;
     Toolbar toolbar;
 
-    RecyclerView displayDoctors;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
