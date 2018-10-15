@@ -111,7 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Button btnMedical = (Button) findViewById(R.id.btnMedical);
         btnMedical.setOnClickListener(new View.OnClickListener() {
-            String Hospital = "Medical";
+            String Hospital = "medical centres";
 
             @Override
             public void onClick(View v) {

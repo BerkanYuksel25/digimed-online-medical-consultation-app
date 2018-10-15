@@ -9,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,25 +18,32 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import ses1b.group10.android_application.dataPacket.Title;
 
 
-public class DisplayDoctors extends AppCompatActivity {
+public class FindDoctorActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String doc_id;
     DatabaseReference databaseReference;
-
-
     RecyclerView displayDoctors;
+    Toolbar toolbar;
+    private ImageButton imageButton;
+    private EditText editText;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_doctors);
+        setContentView(R.layout.activity_find_doctor);
         mAuth= FirebaseAuth.getInstance();
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Find Doctor");
 
 
 
@@ -46,8 +55,25 @@ public class DisplayDoctors extends AppCompatActivity {
         displayDoctors.setHasFixedSize(true);
         displayDoctors.setLayoutManager(new LinearLayoutManager(this));
 
+        imageButton =findViewById(R.id.imagesearch);
+        editText =findViewById(R.id.edt_search_text);
+
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchinput = editText.getText().toString();
+
+                searchfordoctor(searchinput);
+            }
+        });
+
+
+
 
     }
+
+
 
     @Override
     protected void onStart() {
@@ -65,7 +91,7 @@ public class DisplayDoctors extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         doc_id=getRef(position).getKey().toString();
-                        Intent intent = new Intent(DisplayDoctors.this,ViewDoctorDetails.class);
+                        Intent intent = new Intent(FindDoctorActivity.this,ViewDoctorDetails.class);
                         intent.putExtra("doc_id",doc_id);
                         startActivity(intent);
                     }
@@ -74,6 +100,39 @@ public class DisplayDoctors extends AppCompatActivity {
         };
         displayDoctors.setAdapter(adapter);
     }
+
+    private void searchfordoctor(String searchinput) {
+
+        Query search =databaseReference.
+                orderByChild("docFirstName")
+                .startAt(searchinput).endAt(searchinput+"\uf8ff");
+
+        FirebaseRecyclerAdapter<DoctorProfile,DoctorViewHolder> adapter = new FirebaseRecyclerAdapter<DoctorProfile, DoctorViewHolder>(
+                DoctorProfile.class, R.layout.recycle_view,DoctorViewHolder.class,search
+        ) {
+            @Override
+            protected void populateViewHolder(DoctorViewHolder viewHolder, DoctorProfile model, final int position) {
+                viewHolder.setImage(getApplicationContext(),model.getDocImage());
+                viewHolder.setTextFirstName(model.getDocFirstName());
+                viewHolder.setLastName(model.getDocFamilyName());
+                viewHolder.setTextOccupation(model.getDocOccupation());
+                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        doc_id=getRef(position).getKey().toString();
+                        Intent intent = new Intent(FindDoctorActivity.this,ViewDoctorDetails.class);
+                        intent.putExtra("doc_id",doc_id);
+                        startActivity(intent);
+                    }
+                });
+            }
+        };
+        displayDoctors.setAdapter(adapter);
+
+
+    }
+
+
 
     public static class DoctorViewHolder extends RecyclerView.ViewHolder{
 

@@ -15,18 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="16dp" />
-
     <Button
         android:id="@+id/buttonStorage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
+        android:padding="10sp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/btn_Storage"
         android:textColor="@android:color/background_light"
@@ -40,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="286dp"
+        android:padding="10sp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/btn_Cloud"
         android:textColor="@android:color/background_light"

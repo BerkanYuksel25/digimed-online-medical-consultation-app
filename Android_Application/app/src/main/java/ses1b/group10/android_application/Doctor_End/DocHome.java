@@ -51,9 +51,9 @@ public class DocHome extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentDoctorID = mAuth.getCurrentUser().getUid();
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home");
+//        toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle("Home");
 
         doctorProfile = FirebaseDatabase.getInstance().getReference().child("Doctors");
 
@@ -61,7 +61,7 @@ public class DocHome extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(DocHome.this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         navigationView = findViewById(R.id.nav_view);
 
         final View headerView = navigationView.inflateHeaderView(R.layout.nav_header);
@@ -98,13 +98,14 @@ public class DocHome extends AppCompatActivity {
                     break;
 
                 case R.id.doctorsProfile:
-                    Intent homeIntent= new Intent(this,DoctorProfileActivity.class);
+                    Intent homeIntent= new Intent(this,EditDocProfileActivity.class);
                     startActivity(homeIntent);
                     break;
 
-                case R.id.acceptPairRequests:
-
-                    break;
+//                case R.id.patientRequests:
+//                    Intent pairtIntent = new Intent(this,DisplayPotentialPatients.class);
+//                    startActivity(pairtIntent);
+//                    break;
             }
 
 

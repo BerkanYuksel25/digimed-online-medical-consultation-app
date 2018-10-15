@@ -8,12 +8,9 @@
     >
 
 
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="52dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_pic"
@@ -65,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="22dp"
                 android:fontFamily="sans-serif"
                 android:hint="@string/hint_family_name"
                 android:inputType="textPersonName"
