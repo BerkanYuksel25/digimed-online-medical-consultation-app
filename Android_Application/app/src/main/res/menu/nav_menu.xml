@@ -22,11 +22,15 @@
         android:title="My Doctors"
         android:icon="@drawable/friends"/>
 
+
+
     <item android:id="@+id/signOut"
         android:title="Sign Out"
         android:icon="@drawable/logout"/>
 
-
+    <item android:id="@+id/medicalcen"
+        android:title="Medical Facilities"
+        android:icon="@drawable/profile_icon"/>
 
 
 </menu>
