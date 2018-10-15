@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ViewDoctorDetails">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,7 +27,7 @@
                 android:layout_height="150sp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="50dp"
                 android:paddingStart="10sp"
                 android:src="@drawable/profile"
                 app:civ_border_color="@color/white"
@@ -42,35 +37,35 @@
                 android:id="@+id/docfirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp"
                 android:layout_below="@id/docProfileImage"
+                android:layout_margin="20sp"
+                android:gravity="center"
                 android:text="@string/hint_first_name"
-                android:layout_margin="15sp"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/doclastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp"
                 android:layout_below="@id/docfirstName"
+                android:layout_margin="15sp"
+                android:gravity="center"
                 android:text="@string/hint_family_name"
-                android:layout_margin="15sp"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp" />
 
 
             <TextView
                 android:id="@+id/occupation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp"
                 android:layout_below="@id/doclastName"
+                android:layout_margin="15sp"
+                android:gravity="center"
                 android:text="Occupation"
-                android:layout_margin="15sp"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/pairrequest"
@@ -83,7 +78,7 @@
                 android:text="Send Pair Request"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:layout_margin="15sp"
+                android:layout_margin="25sp"
                 />
 
             <Button

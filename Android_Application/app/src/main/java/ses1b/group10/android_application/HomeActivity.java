@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     String fullname = dataSnapshot.child("patientFirstName").getValue().toString()
-                            +dataSnapshot.child("patientFamilyName").getValue().toString();
+                            + " " + dataSnapshot.child("patientFamilyName").getValue().toString();
                     userName.setText(fullname);
 
 

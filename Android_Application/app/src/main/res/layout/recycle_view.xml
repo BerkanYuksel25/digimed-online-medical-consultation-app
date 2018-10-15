@@ -37,7 +37,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/imageName"
-            android:text="lastName"
+            android:text="@string/last_name"
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/imageView"
-            android:text="Doctor Occupation"
+            android:text="@string/doc_occupation"
             android:textColor="@color/colorPrimaryDark" />
 
 

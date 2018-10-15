@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/imageViewplaces"
-        android:layout_width="159dp"
-        android:layout_height="164dp"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -71,14 +71,15 @@
     <CheckBox
         android:id="@+id/imDocBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_below="@+id/editTextPassword"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
 
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Doctor"
+        android:checked="false"
+        android:text="@string/doctor_check"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
