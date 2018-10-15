@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,36 +10,45 @@
     tools:context=".dataPacket.Title">
 
 
-
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/data_packet"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"/>
+    <ImageView
+        android:id="@+id/digimed_logo"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_marginTop="-100sp"
+        android:contentDescription="@string/logo_content_description"
+        app:srcCompat="@drawable/digimed_logo" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="25sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/make_packet"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50sp" />
 
     <EditText
 
         android:id="@+id/packetTitle"
-        android:layout_width="330dp"
-        android:layout_height="90dp"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:gravity="start"
         android:hint="@string/Title"
         android:inputType="textMultiLine"
         android:singleLine="false"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/colorPrimaryDark" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="50sp" />
 
     <Button
         android:id="@+id/nextMedCon"
