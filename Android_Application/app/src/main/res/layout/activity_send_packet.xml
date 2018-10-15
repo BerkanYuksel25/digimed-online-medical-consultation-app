@@ -146,7 +146,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="10sp"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
     </LinearLayout>
 
