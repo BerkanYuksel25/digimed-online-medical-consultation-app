@@ -25,7 +25,7 @@ public class DisplayDoctors extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String doc_id;
     DatabaseReference databaseReference;
-    Toolbar toolbar;
+
 
     RecyclerView displayDoctors;
 
@@ -35,9 +35,6 @@ public class DisplayDoctors extends AppCompatActivity {
         setContentView(R.layout.activity_display_doctors);
         mAuth= FirebaseAuth.getInstance();
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Select Doctor");
 
 
 

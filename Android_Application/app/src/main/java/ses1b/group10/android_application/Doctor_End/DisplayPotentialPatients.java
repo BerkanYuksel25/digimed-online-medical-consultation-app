@@ -40,9 +40,7 @@ public class DisplayPotentialPatients extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentDoctorID = mAuth.getCurrentUser().getUid();
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Select Patient");
+
 
 
 

@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CircleImageView profilePicture;
     private TextView userName;
-    private Toolbar toolbar;
+
 
     private DatabaseReference patientProfile;
     private FirebaseAuth mAuth;
@@ -54,9 +54,6 @@ public class HomeActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         currentPatientId =mAuth.getCurrentUser().getUid();
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home");
 
         patientProfile =FirebaseDatabase.getInstance().getReference().child("Patients");
 
@@ -65,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(HomeActivity.this,drawerLayout,R.string.drawer_open,R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
         navigationView =findViewById(R.id.nav_view);
 
         final View headerView = navigationView.inflateHeaderView(R.layout.nav_header);
