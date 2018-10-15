@@ -39,16 +39,17 @@
     <string name="height_cm">Height</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
-    <string name="hint_med_con">Medical Condition</string>
+    <string name="hint_med_con">What is your medical condition?</string>
     <string name="btn_save_profile">Save</string>
     <string name="record">record</string>
     <string name="play">play</string>
     <string name="action_settings">Settings</string>
     <string name="profile_image_des">Patient profile image</string>
     <string name="record_btn">Record Video</string>
-    <string name="data_packet">Create Data Packet</string>
+    <string name="data_packet">Confirm eConsultation</string>
+    <string name="make_packet">New eConsultation</string>
     <string name="sub_btn">Submit</string>
-    <string name="Title">Title</string>
+    <string name="Title">Title your new eConsultation.</string>
     <string name="RecordVideo">Recorded Video</string>
     <string name="heartRate">Heart Rate</string>
     <string name="createDatapacket">Create Data Packet</string>
@@ -62,7 +63,16 @@
     <string name="btn_Cloud">Upload from Cloud Storage</string>
     <string name="btn_Storage">Upload from Phone Storage</string>
     <string name="btn_upload">Upload a File</string>
-
+    <string name="edit">Edit</string>
+    <string name="occupation">Occupation</string>
+    <string name="doc_occupation">Doctor Occupation</string>
+    <string name="home">Home</string>
+    <string name="new_eConsultation">New eConsultation</string>
+    <string name="my_doctors">My Doctors</string>
+    <string name="find_doctors">Find Doctors</string>
+    <string name="find_facilities">Find Medical Facilities</string>
+    <string name="last_name">Last Name</string>
+    <string name="doctor_check">I am a doctor.</string>
     <item name="action_settings" type="id">Settings</item>
 </resources>
 

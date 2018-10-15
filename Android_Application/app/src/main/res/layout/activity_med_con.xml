@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,28 +11,31 @@
     tools:context=".dataPacket.MedCon">
 
 
-
-
-
-
+    <ImageView
+        android:id="@+id/digimed_logo2"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_marginTop="-100sp"
+        android:contentDescription="@string/logo_content_description"
+        app:srcCompat="@drawable/digimed_logo" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="110sp" />
 
     <EditText
         android:id="@+id/messageText"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="50sp"
         android:gravity="start"
         android:hint="@string/hint_med_con"
         android:inputType="textMultiLine"
         android:singleLine="false"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/colorPrimaryDark" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="50sp" />
 
     <Button
         android:id="@+id/nextRecordVideo"

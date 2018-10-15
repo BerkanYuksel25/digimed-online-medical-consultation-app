@@ -6,24 +6,23 @@
     tools:context=".DisplayDoctors"
     android:background="@color/white">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
-
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="52dp" />
+
+
+
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recylcerView"
         android:layout_width="match_parent"
-        android:layout_height="513dp"
+        android:layout_height="398dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="54dp"
+        android:layout_marginBottom="12dp"
         android:background="@color/cardview_light_background" />
+
 
 </RelativeLayout>

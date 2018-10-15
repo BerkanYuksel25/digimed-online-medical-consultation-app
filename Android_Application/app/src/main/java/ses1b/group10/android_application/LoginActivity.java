@@ -6,6 +6,7 @@ package ses1b.group10.android_application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextEmail =  findViewById(R.id.editTextEmail);
         editTextPassword =  findViewById(R.id.editTextPassword);
         progressBar =  findViewById(R.id.progressbar);
-        imDoc=findViewById(R.id.imDocBox);
+        imDoc = findViewById(R.id.imDocBox);
 
         imDoc.setOnClickListener(
                 new View.OnClickListener() {
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onClick(View v) {
                         if(((CheckBox)v).isChecked()) {
                             Toast.makeText(LoginActivity.this,
-                                    "Doctor is selected",Toast.LENGTH_LONG).show();
+                                    "Doctor is selected.",Toast.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -112,7 +113,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if(imDoc.isChecked()){
                         final String currentDocID;
                         currentDocID = mAuth.getCurrentUser().getUid();
-
                         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                         DatabaseReference userNameRef = rootRef.child("Doctors").child(currentDocID);
                         ValueEventListener eventListener = new ValueEventListener() {
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     startActivity(intent);
                                 }
                                 else{
-                                    Toast.makeText(LoginActivity.this,"No doctor with this information",
+                                    Toast.makeText(LoginActivity.this,"No doctor with this information.",
                                             Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     startActivity(intent);
                                 }
                                 else{
-                                    Toast.makeText(LoginActivity.this,"No patient with this information",
+                                    Toast.makeText(LoginActivity.this,"No patient with this information.",
                                             Toast.LENGTH_LONG).show();
                                 }
                             }
