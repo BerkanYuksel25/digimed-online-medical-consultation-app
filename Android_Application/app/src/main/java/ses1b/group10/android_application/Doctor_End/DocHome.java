@@ -98,12 +98,13 @@ public class DocHome extends AppCompatActivity {
                     break;
 
                 case R.id.doctorsProfile:
-                    Intent homeIntent= new Intent(this,DoctorProfileActivity.class);
+                    Intent homeIntent= new Intent(this,EditDocProfileActivity.class);
                     startActivity(homeIntent);
                     break;
 
-                case R.id.acceptPairRequests:
-
+                case R.id.patientRequests:
+                    Intent pairtIntent = new Intent(this,DisplayPotentialPatients.class);
+                    startActivity(pairtIntent);
                     break;
             }
 

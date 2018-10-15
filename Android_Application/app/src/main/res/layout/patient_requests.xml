@@ -21,8 +21,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10sp">
+        android:layout_margin="10sp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/imageName"
@@ -41,13 +41,42 @@
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/docOcc"
+            android:id="@+id/medcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/imageView"
             android:text="Doctor Occupation"
             android:textColor="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp">
+
+            <Button
+                android:id="@+id/acceptBtn"
+                android:layout_width="65dp"
+                android:layout_height="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimaryDark"
+                android:text="Accept"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/declineBtn"
+                android:layout_width="65dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="right"
+                android:layout_marginEnd="14dp"
+                android:background="@color/colorAccent"
+                android:text="Decline"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
 
 
     </LinearLayout>

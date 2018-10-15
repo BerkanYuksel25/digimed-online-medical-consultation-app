@@ -16,9 +16,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import ses1b.group10.android_application.DoctorProfile;
+import ses1b.group10.android_application.PatientProfile;
 import ses1b.group10.android_application.R;
 import ses1b.group10.android_application.ViewDoctorDetails;
 
@@ -26,12 +28,16 @@ import ses1b.group10.android_application.ViewDoctorDetails;
 public class DisplayPotentialPatients extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String pat_id;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,requestRef,PariedRef;
     Toolbar toolbar;
 
     RecyclerView displayPatients;
 
     private String currentDoctorID;
+
+    String patient;
+    private String pairStatus;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,29 +52,49 @@ public class DisplayPotentialPatients extends AppCompatActivity {
 
 
 
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("Patients").child(currentDoctorID).child("request_type");
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Patients");
         databaseReference.keepSynced(true);
+        requestRef =FirebaseDatabase.getInstance().getReference("PairRequests");
+        PariedRef=FirebaseDatabase.getInstance().getReference().child("Paired");
+
 
 
         displayPatients = findViewById(R.id.recyclerView);
         displayPatients.setHasFixedSize(true);
         displayPatients.setLayoutManager(new LinearLayoutManager(this));
 
-
+        pairStatus = "not_friends";
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<DoctorProfile,DoctorViewHolder> adapter = new FirebaseRecyclerAdapter<DoctorProfile, DoctorViewHolder>(
-                DoctorProfile.class, R.layout.recycle_view,DoctorViewHolder.class, databaseReference
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        FirebaseRecyclerAdapter<PatientProfile,PatientViewHolder> adapter = new FirebaseRecyclerAdapter<PatientProfile, PatientViewHolder>(
+                PatientProfile.class, R.layout.patient_requests,PatientViewHolder.class, databaseReference
         ) {
             @Override
-            protected void populateViewHolder(DoctorViewHolder viewHolder, DoctorProfile model, final int position) {
-                viewHolder.setImage(getApplicationContext(),model.getDocImage());
-                viewHolder.setTextFirstName(model.getDocFirstName());
-                viewHolder.setLastName(model.getDocFamilyName());
-                viewHolder.setTextOccupation(model.getDocOccupation());
+            protected void populateViewHolder(PatientViewHolder viewHolder, PatientProfile model, final int position) {
+                viewHolder.setPatientImage(getApplicationContext(),model.getPatientImage());
+                viewHolder.setPatientFirstName(model.getPatientFirstName());
+                viewHolder.setPatientFamilyName(model.getPatientFamilyName());
+                viewHolder.setPatientMedCon(model.getPatientMedCon());
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -79,40 +105,41 @@ public class DisplayPotentialPatients extends AppCompatActivity {
                     }
                 });
             }
+
+
         };
-        displayPatients
-                .setAdapter(adapter);
+        displayPatients.setAdapter(adapter);
     }
 
-    public static class DoctorViewHolder extends RecyclerView.ViewHolder{
+    public static class PatientViewHolder extends RecyclerView.ViewHolder{
 
         View mView;
 
-        public DoctorViewHolder(View itemView){
+        public PatientViewHolder(View itemView){
             super(itemView);
             mView=itemView;
         }
 
-        public void setImage(Context context, String image){
+        public void setPatientImage(Context context, String image){
             ImageView post_image = mView.findViewById(R.id.imageView);
 
             Picasso.get().load(image).into(post_image);
 
         }
 
-        public void setTextFirstName(String name){
+        public void setPatientFirstName(String name){
             TextView docName = mView.findViewById(R.id.imageName);
             docName.setText(name);
 
         }
 
-        public void setLastName(String name){
+        public void setPatientFamilyName(String name){
             TextView docLastName = mView.findViewById(R.id.lastName);
             docLastName.setText(name);
         }
 
-        public void setTextOccupation(String occupation){
-            TextView docOppcupation = mView.findViewById(R.id.docOcc);
+        public void setPatientMedCon(String occupation){
+            TextView docOppcupation = mView.findViewById(R.id.medcon);
             docOppcupation.setText(occupation);
         }
 

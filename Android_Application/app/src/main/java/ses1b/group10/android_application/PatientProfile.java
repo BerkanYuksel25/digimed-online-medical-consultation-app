@@ -97,4 +97,7 @@ public class PatientProfile {
     public void setPatientImage(String patientImage) {
         this.patientImage = patientImage;
     }
+
+    public PatientProfile() {
+    }
 }

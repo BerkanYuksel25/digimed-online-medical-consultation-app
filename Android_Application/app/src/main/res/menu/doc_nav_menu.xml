@@ -10,28 +10,9 @@
         android:title="Profile"
         android:icon="@drawable/profile_icon"/>
 
-    <item android:id="@+id/viewYourPatients"
-        android:title="Find Doctors"
-        android:icon="@drawable/find_people"/>
-
-    <item android:id="@+id/acceptPairRequests"
-        android:title="My Doctors"
-        android:icon="@drawable/friends"/>
-
-    <item android:id="@+id/viewDataPackets"
-        android:title="Create data Packet"
-        android:icon="@drawable/messages"/>
-    <item android:id="@+id/Home"
-        android:title="Home"
-        android:icon="@drawable/home"/>
 
 
-
-    <item android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/profile_icon"/>
-
-    <item android:id="@+id/findDoctors"
+    <item android:id="@+id/patientRequests"
         android:title="Patients Requests"
         android:icon="@drawable/find_people"/>
 
